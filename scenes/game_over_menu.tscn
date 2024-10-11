@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpgmnkgknbaw6"]
+
+[ext_resource type="Script" path="res://scenes/game_over_menu.gd" id="1_3fbri"]
+[ext_resource type="FontFile" uid="uid://d1qhkursqkeh8" path="res://MidnightMinutes_DEMO.otf" id="2_dfcyu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oi5k0"]
+bg_color = Color(0.81221, 0.532321, 0.151649, 1)
+shadow_color = Color(0, 0.0789408, 0.167557, 0.6)
+shadow_size = 5
+shadow_offset = Vector2(10, 10)
+
+[node name="GameOverMenu" type="CanvasGroup"]
+script = ExtResource("1_3fbri")
+
+[node name="GameOverPanel" type="Panel" parent="."]
+visibility_layer = 7
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 300.0
+offset_top = 400.0
+offset_right = 700.0
+offset_bottom = 650.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_oi5k0")
+
+[node name="ResultLabel" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 369.0
+offset_top = 430.0
+offset_right = 636.0
+offset_bottom = 500.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.921569, 0.658824, 0, 0.152941)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_fonts/font = ExtResource("2_dfcyu")
+theme_override_font_sizes/font_size = 40
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartButton" type="Button" parent="."]
+offset_left = 388.0
+offset_top = 590.0
+offset_right = 626.0
+offset_bottom = 637.0
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_dfcyu")
+theme_override_font_sizes/font_size = 24
+text = "PLAY AGAIN"
+
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
