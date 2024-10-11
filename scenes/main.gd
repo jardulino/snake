@@ -11,6 +11,7 @@ var cells: int = 20
 var cell_size: int = 50
 
 #food
+var food: Sprite2D
 var food_position: Vector2
 var regenerate_food: bool = true
 
@@ -115,13 +116,24 @@ func check_self_eaten():
 			end_game()
 			
 func move_food():
+	if food:
+		food.hide()
 	while regenerate_food:
 		regenerate_food = false
 		food_position = Vector2(randi_range(0, cells - 1), randi_range(0, cells - 1))
 		for i in snake_data:
 			if food_position == i:
 				regenerate_food = true
-	$Food.position = (food_position * cell_size) + Vector2(0, cell_size)
+				
+	var random = randi_range(0, 1)
+	food = $Food
+	if random == 1:
+		food = $FoodBug
+	if random == 0: 
+		food = $Food
+		
+	food.position = (food_position * cell_size) + Vector2(0, cell_size)
+	food.show()
 	regenerate_food = true
 			
 func check_food_eaten():
