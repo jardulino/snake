@@ -28,7 +28,7 @@ texture = ExtResource("5_kr0u1")
 offset = Vector2(25, 25)
 
 [node name="FoodBug" type="Sprite2D" parent="."]
-position = Vector2(-13, 137)
+position = Vector2(-13, -12)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("6_50l8i")
 offset = Vector2(25, 25)
