@@ -22,22 +22,49 @@ texture = ExtResource("2_j88ra")
 wait_time = 0.1
 
 [node name="Food" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(0, 51)
+position = Vector2(-1, 202)
 texture = ExtResource("5_kr0u1")
 offset = Vector2(25, 25)
 
 [node name="FoodBug" type="Sprite2D" parent="."]
-position = Vector2(-13, -12)
-scale = Vector2(1.5, 1.5)
+position = Vector2(152, 201)
+scale = Vector2(2, 2)
 texture = ExtResource("6_50l8i")
-offset = Vector2(25, 25)
+offset = Vector2(12, 12)
 region_enabled = true
-region_rect = Rect2(64, 0, 32, 32)
+region_rect = Rect2(68, 4, 24, 24)
+
+[node name="FoodHoney" type="Sprite2D" parent="."]
+visibility_layer = 3
+position = Vector2(202, 201)
+scale = Vector2(1.571, 1.5)
+texture = ExtResource("6_50l8i")
+offset = Vector2(16, 16)
+region_enabled = true
+region_rect = Rect2(160, 0, 32, 32)
+region_filter_clip_enabled = true
 
 [node name="GameOverMenu" parent="." instance=ExtResource("6_572vi")]
 process_mode = 2
 z_index = 1
+
+[node name="FoodWorms" type="Sprite2D" parent="."]
+position = Vector2(101, 203)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("6_50l8i")
+offset = Vector2(16, 16)
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+region_filter_clip_enabled = true
+
+[node name="FoodBee" type="Sprite2D" parent="."]
+position = Vector2(49, 202)
+scale = Vector2(1.5, 1.66071)
+texture = ExtResource("6_50l8i")
+offset = Vector2(17, 14)
+region_enabled = true
+region_rect = Rect2(32, 4, 32, 28)
+region_filter_clip_enabled = true
 
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
 [connection signal="restart" from="GameOverMenu" to="." method="_on_game_over_menu_restart"]

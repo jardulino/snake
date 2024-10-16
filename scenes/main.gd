@@ -35,6 +35,11 @@ func _ready() -> void:
 	new_game()
 	
 func new_game():
+	$Food.hide()
+	$FoodBug.hide()
+	$FoodHoney.hide()
+	$FoodBee.hide()
+	$FoodWorms.hide()
 	get_tree().paused = false
 	get_tree().call_group("segments", "queue_free")
 	$GameOverMenu.hide()
@@ -125,12 +130,19 @@ func move_food():
 			if food_position == i:
 				regenerate_food = true
 				
-	var random = randi_range(0, 1)
+	var random = randi_range(0, 4)
 	food = $Food
+	if random == 4:
+		food = $FoodWorms
+	if random == 3:
+		food = $FoodBee
+	if random == 2:
+		food = $FoodHoney
 	if random == 1:
 		food = $FoodBug
 	if random == 0: 
 		food = $Food
+	
 		
 	food.position = (food_position * cell_size) + Vector2(0, cell_size)
 	food.show()
