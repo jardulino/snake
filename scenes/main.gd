@@ -14,6 +14,7 @@ var cell_size: int = 50
 var food: Sprite2D
 var food_position: Vector2
 var regenerate_food: bool = true
+var food_list: Array
 
 #snake variables
 var old_data: Array
@@ -35,11 +36,17 @@ func _ready() -> void:
 	new_game()
 	
 func new_game():
-	$Food.hide()
-	$FoodBug.hide()
-	$FoodHoney.hide()
-	$FoodBee.hide()
-	$FoodWorms.hide()
+	food_list = [
+		$FoodApple,
+		$FoodBug,
+		$FoodHoney,
+		$FoodBee,
+		$FoodWorms,
+	]
+	
+	for food_item in food_list:
+		food_item.hide()
+		
 	get_tree().paused = false
 	get_tree().call_group("segments", "queue_free")
 	$GameOverMenu.hide()
@@ -130,20 +137,9 @@ func move_food():
 			if food_position == i:
 				regenerate_food = true
 				
-	var random = randi_range(0, 4)
-	food = $Food
-	if random == 4:
-		food = $FoodWorms
-	if random == 3:
-		food = $FoodBee
-	if random == 2:
-		food = $FoodHoney
-	if random == 1:
-		food = $FoodBug
-	if random == 0: 
-		food = $Food
+	var food_index = randi_range(0, 4)
+	food = food_list[food_index]
 	
-		
 	food.position = (food_position * cell_size) + Vector2(0, cell_size)
 	food.show()
 	regenerate_food = true
